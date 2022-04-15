@@ -52,7 +52,7 @@ func handleInteraction(w dns.ResponseWriter, r *dns.Msg) {
 		nameString := q1.Name
 		typeString := dns.TypeToString[q1.Qtype]
 
-		message := '{"date":"'+ dateString +'","remote-address":"'+ fromString+ '","name":"'+nameString+'","type":"'+typeString+'"}'
+		message := "{\"date\":\""+ dateString +"\",\""+remote-address+"\":\""+ fromString+ "\",\"name\":\""+nameString+"\",\"type\":\""+typeString+"\"}"
 		if conf.SlackWebhook != "" {
 			sendSlack(message)
 		} else {
