@@ -108,13 +108,13 @@ func loadConfig() {
 }
 
 func main() {
-	fmt.Println("Configuring...")
+	//fmt.Println("Configuring...")
 	loadConfig()
 	if conf.Domain == "" || conf.PublicIP == "" {
 		fmt.Println("Error: Must supply a domain and public IP in config file")
 		return
 	} else {
-		fmt.Println("Listener starting!")
+		//fmt.Println("Listener starting!")
 	}
 
 	dns.HandleFunc(".", handleInteraction)
