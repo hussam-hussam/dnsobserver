@@ -47,10 +47,10 @@ func handleInteraction(w dns.ResponseWriter, r *dns.Msg) {
 
 	if dns.IsSubDomain(conf.Domain+".", q1.Name) && q1.Name != "ns1."+conf.Domain+"." && q1.Name != "ns2."+conf.Domain+"." {
 		addrParts := strings.Split(remoteAddr, ":")
-		dateString := "Received at: " + "`" + t.Format("January 2, 2006 3:04 PM") + "`"
-		fromString := "Received From: " + "`" + addrParts[0] + "`"
-		nameString := "Lookup Query: " + "`" + q1.Name + "`"
-		typeString := "Query Type: " + "`" + dns.TypeToString[q1.Qtype] + "`"
+		dateString := t.Format("January 2, 2006 3:04 PM")
+		fromString := addrParts[0]
+		nameString := q1.Name
+		typeString := dns.TypeToString[q1.Qtype]
 
 		message := '{"date":"'+ dateString +'","remote-address":"'+ fromString+ '","name":"'+nameString+'","type":"'+typeString+'"}'
 		if conf.SlackWebhook != "" {
